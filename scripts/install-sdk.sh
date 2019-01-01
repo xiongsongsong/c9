@@ -82,7 +82,7 @@ updateCore() {
 
 
 installGlobalDeps() {
-    ./install.sh
+    ./scripts/install.sh
 }
 
 ############################################################################
