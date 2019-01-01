@@ -36,8 +36,6 @@ if [ ! -d "$C9_DIR" ]; then
 fi
 
 VERSION=1
-NODE_VERSION=v6.3.1
-NODE_VERSION_ARM_PI=v0.10.28
 NPM=/usr/local/bin/npm
 NODE=/usr/local/bin/node
 
@@ -402,13 +400,13 @@ ptyjs(){
 
   if ! hasPty; then
     echo "Unknown exception installing pty.js"
-    "$C9_DIR/node/bin/node" -e "console.log(require('node-pty-prebuilt'))"
+    "node" -e "console.log(require('node-pty-prebuilt'))"
     exit 100
   fi
 }
 
 hasPty() {
-  local HASPTY=$("$C9_DIR/node/bin/node" -p "typeof require('node-pty-prebuilt').createTerminal=='function'" 2> /dev/null)
+  local HASPTY=$("node" -p "typeof require('node-pty-prebuilt').createTerminal=='function'" 2> /dev/null)
   if [ "$HASPTY" != true ]; then
     return 1
   fi
